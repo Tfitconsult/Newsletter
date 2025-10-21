@@ -1,0 +1,23 @@
+@startuml
+actor Editor as E
+actor Subscriber as S
+actor Admin as A
+rectangle "Newsletter System" {
+  (Submit Note) as UC_Submit
+  (Review & Select Notes) as UC_Select
+  (Compile Issue) as UC_Compile
+  (Render Newsletter) as UC_Render
+  (Send via SMTP) as UC_Send
+  (View Archive) as UC_Archive
+  (Manage Subscribers) as UC_Subs
+  (Configure SMTP/DB/DNS) as UC_Config
+}
+E --> UC_Submit
+E --> UC_Select
+E --> UC_Compile
+UC_Compile --> UC_Render
+UC_Render --> UC_Send
+S --> UC_Archive
+A --> UC_Subs
+A --> UC_Config
+@enduml

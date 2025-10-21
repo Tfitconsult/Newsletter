@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    env_file:
+      - topics/${TOPIC_SLUG:-ev}/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app/api
+      - ./api/templates:/app/api/templates
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    env_file:
+      - topics/${TOPIC_SLUG:-ev}/.env
+    volumes:
+      - ./worker:/app/worker
+      - ./api:/app/api
+    restart: unless-stopped

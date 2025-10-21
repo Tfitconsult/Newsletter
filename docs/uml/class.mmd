@@ -1,0 +1,7 @@
+classDiagram
+  direction LR
+  class Note { id; created_at; raw_text; status; auto_category; score; ai_title; ai_blurb; tags }
+  class Issue { id; issue_date; subject; preface }
+  class IssueItem { issue_id; note_id; position }
+  IssueItem --> Issue
+  IssueItem --> Note

@@ -1,0 +1,3 @@
+# Do not commit per-topic secrets
+.env
+**/.env

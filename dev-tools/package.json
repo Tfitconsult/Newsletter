@@ -1,0 +1,11 @@
+{
+  "name": "newsletter-dev-tools",
+  "private": true,
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.9.1",
+    "mjml": "^4.15.3"
+  },
+  "scripts": {
+    "render:mermaid": "mkdir -p ../build/diagrams && for f in ../docs/uml/*.mmd; do npx mmdc -i \"$f\" -o ../build/diagrams/$(basename \"${f%.mmd}\").svg; done"
+  }
+}

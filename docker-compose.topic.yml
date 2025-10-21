@@ -1,0 +1,6 @@
+# Topic overlay: ensures services read env from topics/${TOPIC_SLUG}/.env
+services:
+  api:
+    env_file: ["topics/${TOPIC_SLUG}/.env"]
+  worker:
+    env_file: ["topics/${TOPIC_SLUG}/.env"]

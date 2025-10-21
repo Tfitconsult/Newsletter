@@ -1,0 +1,10 @@
+flowchart LR
+  U[User/Editor] -->|POST /notes| A[FastAPI API]
+  A -->|INSERT| DB[(MySQL 8.0 on Webhosting 2000)]
+  W[Worker] -->|classify + UPDATE| DB
+  U -->|POST /issues/compile| A
+  A -->|SELECT notes| DB
+  A --> R[Renderer (MJML + Jinja2)]
+  R -->|HTML + Plaintext| O[Output]
+  O -->|SMTP| M[Webhosting Mailbox]
+  O -->|Publish| S[Static Archive]
